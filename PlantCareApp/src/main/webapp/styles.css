@@ -1,0 +1,165 @@
+<!-- styles.css -->
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: 'Calibri', sans-serif;
+}
+
+.plant-header {
+	margin-left: 20px;
+}
+
+h1 {
+	font-weight: bold;
+	display: block;
+	margin: 0;
+}
+
+h2 {
+	margin-left: 20px;
+}
+
+.plant-header > .scientific-name {
+	font-style: italic;
+}
+
+.img-container {
+	margin: 20px;
+	width: 300px;
+	height: 300px;
+	float: left;
+}
+
+.img-container > .plant-img{
+	border: 1px solid black;
+	max-width: 100%;
+	max-height: 100%;
+}
+
+.icon-container {
+	width: 50%;
+	height: 300px;
+	min-width: 350px;
+	margin: 20px 0 20px 20px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.icon-container > .sun-container {
+	width: 100%;
+	display: flex;
+	
+}
+
+.sun-container > .sun-img-container {
+	width: 140px;
+	height: 140px;
+	margin-right: 20px;
+	flex-shrink: 0;
+}
+
+.sun-img-container > .img-sun {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+.para {
+	margin: 20px;
+	padding: 0;
+}
+
+.icon-container > .water-container {
+	width: 100%;
+	display: flex;
+}
+
+.water-container > .water-img-container {
+	width: 140px;
+	height: 140px;
+	margin-right: 20px;
+	flex-shrink: 0;
+}
+
+.water-img-container > .img-water {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+.desc-container {
+	margin: 20px 20px 0 20px;
+	width: 95%;
+}
+
+.bg {
+	background-image: url(Images/background.png);
+	background-size: cover;
+	background-attachment: fixed;
+}
+
+#missing-plant-bg {
+    width: 100%; 
+    height: 100%; 
+	min-width: 600px;
+	min-height: 600px;
+    position: fixed; 
+    left: 0px; 
+    top: 0px; 
+    z-index: -1;
+}
+
+.content {
+	background: white;
+	border: 1px solid black;
+	width: 50%;
+	padding: 40px;
+	margin: 100px auto;
+	min-height: 600px;
+	min-width: 350px;
+}
+
+.nav {
+	background: white;
+	list-style: none;
+	text-align: right;
+	padding: 20px 0 20px 0;
+	margin: 0;
+}
+
+.nav > li {
+	display: inline-block;
+	padding: 0 25px 0 25px;
+}
+
+.nav > li > a {
+	text-decoration: none;
+	color: #000000;
+}
+
+.nav > li > a:hover {
+	color: #c1c1c1;
+}
+
+.banner {
+	width: 100%;
+	height: 500px;
+	display: block;
+}
+
+.banner > .banner-image {
+	width: 100%;
+	height: 500px;
+	display: block;
+}
+
+#center {
+	margin: 20px auto;
+	width: 20%;
+	padding: 0;
+	min-width: 100px;
+}
+
+
+
+
