@@ -29,7 +29,7 @@ public class PlantDAO {
     }
 
     public Plant searchByName(String name) throws SQLException, IOException {
-        String query = "SELECT * FROM plants WHERE common_name = ?";
+        String query = "SELECT * FROM plants WHERE LOWER(common_name) LIKE LOWER(CONCAT('%', ?, '%'))";
         try (Connection con = getConnection();
              PreparedStatement ps = con.prepareStatement(query)) {
             ps.setString(1, name);
