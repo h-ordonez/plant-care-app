@@ -5,14 +5,14 @@ including watering frequency, sunlight requirements, and plant descriptions.
 
 ## Tech Stack
 
-- **Backend:** Java 11, Servlets (javax.servlet 4.0), JSP, JSTL
-- **Database:** MySQL 8
+- **Backend:** Java 17, Spring Boot 3, Spring MVC
+- **Templating:** Thymeleaf
+- **Database:** MySQL 8, Spring JDBC
 - **Build:** Apache Maven
-- **Server:** Apache Tomcat
 
 ## Features
 
-- Search for plants by name
+- Search for plants by name (partial and case-insensitive)
 - Browse all available plants in a card grid
 - View care details for each plant: watering schedule, sunlight needs, and a description
 
@@ -21,68 +21,67 @@ including watering frequency, sunlight requirements, and plant descriptions.
 
 ## Prerequisites
 
-- JDK 11 or higher
+- JDK 17 or higher
 - Apache Maven
 - MySQL 8
-- Apache Tomcat 9
 
 ## Setup
 
 **1. Clone the repository**
-  ```                                                                                       
-  git clone https://github.com/h-ordonez/plant-care-app.git                                                                
-  cd PlantCareApp                                                                           
+  ```
+  git clone https://github.com/h-ordonez/plant-care-app.git
+  cd PlantCareApp
   ```
 
 **2. Import the database**
 
 In MySQL, run the included dump file to create and populate the `plants_db` database:
-  ```                                                                                       
-  mysql -u root -p < plants_db_20200731.sql                                                 
-  ```                                                                                       
+  ```
+  mysql -u root -p < plants_db_20200731.sql
+  ```
 
 **3. Configure database credentials**
-  ```                                                                                       
-  cp PlantCareApp/src/main/resources/db.properties.example                                  
-  PlantCareApp/src/main/resources/db.properties                                             
-  ```                                                                                       
-Open `db.properties` and fill in your MySQL username and password.
+  ```
+  cp PlantCareApp/src/main/resources/application.properties.example \
+     PlantCareApp/src/main/resources/application.properties
+  ```
+Open `application.properties` and fill in your MySQL username and password.
 
-**4. Build the WAR**
-  ```                                                                                       
-  cd PlantCareApp                                                                           
-  mvn clean package                                                                         
-  ```                                                                                       
+**4. Build and run**
+  ```
+  cd PlantCareApp
+  mvn spring-boot:run
+  ```
 
-**5. Deploy to Tomcat**
-
-Copy `target/PlantCareApp-1.0.war` into your Tomcat `webapps/` directory and start Tomcat.
 Then navigate to the following in your web browser:
-  ```                                                                                       
-  http://localhost:8080/PlantCareApp-1.0/                                                   
+  ```
+  http://localhost:8080/
   ```
 
 ## Project Structure
 
-  ```                                                                                       
-  PlantCareApp/                                                                             
-  ├── src/main/                                                                             
-  │   ├── java/                                                                             
-  │   │   ├── business/Plant.java              # Plant data model                           
-  │   │   ├── controller/                                                                   
-  │   │   │   ├── SearchServlet.java           # Handles plant search requests              
-  │   │   │   └── PlantListServlet.java        # Handles browse all request                 
-  │   │   └── dao/PlantDAO.java               # Database access layer                       
-  │   ├── resources/                                                                        
-  │   │   └── db.properties.example           # Database config template                    
-  │   └── webapp/                                                                           
-  │       ├── WEB-INF/web.xml                                                               
-  │       ├── Images/                                                                       
-  │       ├── index.html                       # Home page with search form                 
-  │       ├── plants.jsp                       # Browse all plants                          
-  │       ├── output.jsp                       # Plant detail page                          
-  │       └── styles.css                                                                    
-  ├── plants_db_20200731.sql                   # Database seed file                         
-  └── pom.xml                                                                               
+  ```
+  PlantCareApp/
+  ├── src/main/
+  │   ├── java/com/plantcareapp/
+  │   │   ├── model/Plant.java                # Plant data model
+  │   │   ├── controller/PlantController.java # Spring MVC controller
+  │   │   ├── dao/PlantDAO.java               # Database access layer
+  │   │   └── PlantCareAppApplication.java    # Spring Boot entry point
+  │   └── resources/
+  │       ├── static/
+  │       │   ├── Images/
+  │       │   ├── about.html
+  │       │   ├── contact.html
+  │       │   ├── index.html                  # Home page
+  │       │   └── styles.css
+  │       ├── templates/
+  │       │   ├── missing-plant.html
+  │       │   ├── output.html                 # Plant details page
+  │       │   ├── plants.html                 # Browse all plants
+  │       │   └── search.html
+  │       └── application.properties.example  # Database config template
+  ├── plants_db_20200731.sql                  # Database seed file
+  └── pom.xml
   ```
 
