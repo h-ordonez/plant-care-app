@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title th:text="${plant.commonName}">Plant</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="bg">
+  <ul class="nav">
+    <li><a href="/index.html">Home</a></li>
+    <li><a href="/plants">Browse</a></li>
+    <li><a href="/about.html">About</a></li>
+    <li><a href="/contact.html">Contact</a></li>
+  </ul>
+
+  <div class="content">
+
+    <div class="plant-header">
+      <h1><span th:text="${plant.commonName}"></span></h1>
+      <div class="scientific-name">
+        <span th:text="${plant.sciName}"></span>
+      </div>
+    </div>
+
+    <div class="img-container">
+      <img class="plant-img" th:src="${plant.imgPath}" alt="">
+    </div>
+
+    <div class="icon-container">
+
+      <div class="sun-container">
+        <div class="sun-img-container">
+          <img class="img-sun" src="/Images/sun2.png" alt="">
+        </div>
+        <p class="para"><span th:text="${plant.sunInfo}"></span></p>
+      </div>
+
+      <div class="water-container">
+        <div class="water-img-container">
+          <img class="img-water" src="/Images/watering_can2.png" alt="">
+        </div>
+        <p class="para" th:text="${plant.waterInfo}"></p>
+      </div>
+
+    </div>
+
+    <h2>Description</h2>
+    <p class="desc-container">
+      <span th:text="${plant.plantDescription}"></span>
+      (Wikipedia)
+    </p>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Search</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <ul class="nav">
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/plants">Browse</a></li>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+    </ul>
+
+    <div id="center">
+        <h1>Search for your plant!</h1>
+        <form action="/search" method="post">
+            <input type="text" name="search" placeholder="e.g. succulent">
+            <input type="submit" value="Search">
+        </form>
+    </div>
+</body>
+</html>

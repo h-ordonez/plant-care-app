@@ -1,4 +1,4 @@
-package dao;
+package com.plantcareapp.dao;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -7,8 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-import business.Plant;
+import org.springframework.stereotype.Repository;
 
+import com.plantcareapp.model.Plant;
+
+@Repository
 public class PlantDAO {
 
     private Connection getConnection() throws SQLException, IOException {

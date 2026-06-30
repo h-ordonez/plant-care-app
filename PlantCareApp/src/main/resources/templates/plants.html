@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Browse Plants</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="bg">
+<ul class="nav">
+    <li><a href="/index.html">Home</a></li>
+    <li><a href="/plants">Browse</a></li>
+    <li><a href="/about.html">About</a></li>
+    <li><a href="/contact.html">Contact</a></li>
+</ul>
+
+<div class="content-wide">
+    <h1>Browse All Plants</h1>
+    <div class="plant-grid">
+        <a class="plant-card" th:each="plant : ${plants}"
+           th:href="@{/search(search=${plant.commonName})}">
+            <img th:src="${plant.imgPath}" th:alt="${plant.commonName}">
+            <div class="plant-card-info">
+                <h3 th:text="${plant.commonName}">Plant Name</h3>
+                <p th:text="${plant.sciName}">Scientific Name</p>
+            </div>
+        </a>
+    </div>
+</div>
+</body>
+</html>

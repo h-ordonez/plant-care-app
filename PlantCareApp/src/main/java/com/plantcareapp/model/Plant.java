@@ -1,4 +1,4 @@
-package business;
+package com.plantcareapp.model;
 
 import java.io.Serializable;
 
