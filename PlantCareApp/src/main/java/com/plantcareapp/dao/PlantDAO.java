@@ -1,12 +1,12 @@
 package com.plantcareapp.dao;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
 
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.plantcareapp.model.Plant;
@@ -14,24 +14,14 @@ import com.plantcareapp.model.Plant;
 @Repository
 public class PlantDAO {
 
-    private Connection getConnection() throws SQLException, IOException {
-        Properties props = new Properties();
-        try (InputStream is = getClass().getClassLoader().getResourceAsStream("db.properties")) {
-            props.load(is);
-        }
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-        } catch (ClassNotFoundException e) {
-            throw new SQLException("MySQL driver not found.", e);
-        }
-        return DriverManager.getConnection(
-                props.getProperty("db.url"),
-                props.getProperty("db.username"),
-                props.getProperty("db.password")
-        );
+    @Autowired
+    private DataSource dataSource;
+
+    private Connection getConnection() throws SQLException {
+        return dataSource.getConnection();
     }
 
-    public Plant searchByName(String name) throws SQLException, IOException {
+    public Plant searchByName(String name) throws SQLException {
         String query = "SELECT * FROM plants WHERE LOWER(common_name) LIKE LOWER(CONCAT('%', ?, '%'))";
         try (Connection con = getConnection();
              PreparedStatement ps = con.prepareStatement(query)) {
@@ -45,7 +35,7 @@ public class PlantDAO {
         return null;
     }
 
-    public List<Plant> getAllPlants() throws SQLException, IOException {
+    public List<Plant> getAllPlants() throws SQLException {
         List<Plant> plants = new ArrayList<>();
         String query = "SELECT * FROM plants ORDER BY common_name";
         try (Connection con = getConnection();
