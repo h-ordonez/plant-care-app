@@ -71,11 +71,12 @@ Then navigate to the following in your web browser:
   │   └── resources/
   │       ├── static/
   │       │   ├── Images/
+  │       │   └── styles.css
+  │       ├── templates/
+  │       │   ├── fragments/nav.html
   │       │   ├── about.html
   │       │   ├── contact.html
   │       │   ├── index.html                  # Home page
-  │       │   └── styles.css
-  │       ├── templates/
   │       │   ├── missing-plant.html
   │       │   ├── output.html                 # Plant details page
   │       │   ├── plants.html                 # Browse all plants
