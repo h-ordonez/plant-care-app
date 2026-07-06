@@ -19,6 +19,21 @@ public class PlantController {
     @Autowired
     private PlantDAO plantDAO;
 
+    @GetMapping("/")
+    public String showIndex() {
+        return "index";
+    }
+
+    @GetMapping("/about")
+    public String showAbout() {
+        return "about";
+    }
+
+    @GetMapping("/contact")
+    public String showContact() {
+        return "contact";
+    }
+
     @GetMapping("/plants")
     public String showAllPlants(Model model) throws SQLException {
         List<Plant> plants = plantDAO.getAllPlants();

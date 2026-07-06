@@ -4,16 +4,11 @@
 <head>
 	<meta charset="ISO-8859-1">
 	<title>Contact Us</title>
-	<link rel="stylesheet" href="styles.css">
+	<link rel="stylesheet" href="/styles.css">
 </head>
 
 <body class="bg">
-	<ul class="nav">
-		<li><a href="index.html">Home</a></li>
-		<li><a href="plants">Browse</a></li>
-		<li><a href="about.html">About</a></li>
-		<li><a href="contact.html">Contact</a></li>
-	</ul>
+	<ul th:replace="~{fragments/nav :: nav}"></ul>
 	
 	<div class="content">
 		<h1>Contact</h1>
