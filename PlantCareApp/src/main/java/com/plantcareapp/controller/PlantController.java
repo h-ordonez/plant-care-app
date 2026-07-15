@@ -1,8 +1,8 @@
 package com.plantcareapp.controller;
 
-import java.sql.SQLException;
 import java.util.List;
 
+import com.plantcareapp.repository.PlantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,14 +10,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.plantcareapp.dao.PlantDAO;
 import com.plantcareapp.model.Plant;
 
 @Controller
 public class PlantController {
 
     @Autowired
-    private PlantDAO plantDAO;
+    private PlantRepository plantRepository;
 
     @GetMapping("/")
     public String showIndex() {
@@ -35,8 +34,8 @@ public class PlantController {
     }
 
     @GetMapping("/plants")
-    public String showAllPlants(Model model) throws SQLException {
-        List<Plant> plants = plantDAO.getAllPlants();
+    public String showAllPlants(Model model) {
+        List<Plant> plants = plantRepository.findAllByOrderByCommonNameAsc();
         model.addAttribute("plants", plants);
         return "plants";
     }
@@ -47,12 +46,13 @@ public class PlantController {
     }
 
     @PostMapping("/search")
-    public String searchPlant(@RequestParam("search") String search, Model model) throws SQLException {
-        Plant plant = plantDAO.searchByName(search);
-        if (plant == null) {
+    public String searchPlant(@RequestParam("search") String search, Model model) {
+        List<Plant> plants = plantRepository.findByCommonNameContainingIgnoreCase(search);
+
+        if (plants.isEmpty()) {
             return "missing-plant";
         }
-        model.addAttribute("plant", plant);
+        model.addAttribute("plant", plants.get(0));
         return "output";
     }
 }

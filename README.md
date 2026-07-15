@@ -7,7 +7,7 @@ including watering frequency, sunlight requirements, and plant descriptions.
 
 - **Backend:** Java 17, Spring Boot 3, Spring MVC
 - **Templating:** Thymeleaf
-- **Database:** MySQL 8, Spring JDBC
+- **Database:** MySQL 8, Spring Data JPA (Hibernate)
 - **Build:** Apache Maven
 
 ## Features
@@ -64,9 +64,9 @@ Then navigate to the following in your web browser:
   PlantCareApp/
   ├── src/main/
   │   ├── java/com/plantcareapp/
-  │   │   ├── model/Plant.java                # Plant data model
+  │   │   ├── model/Plant.java                # JPA entity mapped to the plants table in DB
   │   │   ├── controller/PlantController.java # Spring MVC controller
-  │   │   ├── dao/PlantDAO.java               # Database access layer
+  │   │   ├── repository/PlantRepository.java # Spring Data JPA repository
   │   │   └── PlantCareAppApplication.java    # Spring Boot entry point
   │   └── resources/
   │       ├── static/
