@@ -1,4 +1,4 @@
-# House Plant Care App
+# Houseplant Care App
 
 A Java web application that lets users search for houseplants and view care instructions  
 including watering frequency, sunlight requirements, and plant descriptions.
