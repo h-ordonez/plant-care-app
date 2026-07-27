@@ -15,6 +15,7 @@ including watering frequency, sunlight requirements, and plant descriptions.
 - Search for plants by name (partial and case-insensitive)
 - Browse all available plants in a card grid
 - View care details for each plant: watering schedule, sunlight needs, and a description
+- Add, edit, and delete plants
 
 
 ![Browse Plants](screenshots/browse_page.JPG)
@@ -79,6 +80,7 @@ Then navigate to the following in your web browser:
   │       │   ├── index.html                  # Home page
   │       │   ├── missing-plant.html
   │       │   ├── output.html                 # Plant details page
+  │       │   ├── plant-form.html             # Add/Edit plant form
   │       │   ├── plants.html                 # Browse all plants
   │       │   └── search.html
   │       └── application.properties.example  # Database config template
