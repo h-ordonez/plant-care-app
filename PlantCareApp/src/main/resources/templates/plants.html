@@ -10,15 +10,24 @@
 
     <div class="content-wide">
         <h1>Browse All Plants</h1>
+
+        <a th:href="@{/plants/showFormForAdd}">Add New Plant</a>
+
         <div class="plant-grid">
-            <a class="plant-card" th:each="plant : ${plants}"
-               th:href="@{/search(search=${plant.commonName})}">
-                <img th:src="${plant.imgPath}" th:alt="${plant.commonName}">
-                <div class="plant-card-info">
-                    <h3 th:text="${plant.commonName}">Plant Name</h3>
-                    <p th:text="${plant.sciName}">Scientific Name</p>
+            <div class="plant-card" th:each="plant : ${plants}">
+                <a th:href="@{/search(search=${plant.commonName})}">
+                    <img th:src="${plant.imgPath}" th:alt="${plant.commonName}">
+                    <div class="plant-card-info">
+                        <h3 th:text="${plant.commonName}">Plant Name</h3>
+                        <p th:text="${plant.sciName}">Scientific Name</p>
+                    </div>
+                </a>
+                <div class="plant-card-actions">
+                    <a th:href="@{/plants/showFormForUpdate(plantId=${plant.id})}">Edit</a>
+                    <a th:href="@{/plants/delete(plantId=${plant.id})}"
+                       onclick="return confirm('Delete this plant?');">Delete</a>
                 </div>
-            </a>
+            </div>
         </div>
     </div>
 </body>

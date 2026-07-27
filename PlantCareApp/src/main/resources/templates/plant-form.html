@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Plant Form</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body class ="bg">
+    <ul th:replace="~{fragments/nav :: nav}"></ul>
+
+    <div class="content">
+        <h1>Save Plant</h1>
+
+        <form th:action="@{/plants/save}" th:object="${plant}" method="post">
+
+            <input type="hidden" th:field="*{id}">
+
+            <label>Common Name:</label>
+            <input type="text" th:field="*{commonName}"><br><br>
+
+            <label>Scientific Name:</label>
+            <input type="text" th:field="*{sciName}"><br><br>
+
+            <label>Watering Info:</label>
+            <input type="text" th:field="*{waterInfo}"><br><br>
+
+            <label>Sunlight Info:</label>
+            <input type="text" th:field="*{sunInfo}"><br><br>
+
+            <label>Description:</label>
+            <textarea th:field="*{plantDescription}" rows="4" cols="50"></textarea><br><br>
+
+            <label>Image File Name:</label>
+            <input type="text" th:field="*{imgFileName}"><br><br>
+
+            <input type="submit" value="Save">
+        </form>
+    </div>
+
+</body>
+</html>

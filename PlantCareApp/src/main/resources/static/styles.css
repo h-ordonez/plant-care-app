@@ -198,6 +198,13 @@ h2 {
     object-fit: cover;
 }
 
+.plant-card-actions {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px 10px 10px;
+    font-size: 0.85rem;
+}
+
 .plant-card-info {
     padding: 10px;
 }
