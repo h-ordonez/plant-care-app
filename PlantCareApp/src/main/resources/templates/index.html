@@ -17,7 +17,7 @@
 	
 	<div id="center">
 	<h1>Search for your plant!</h1>
-	<form action="search" method="post">
+	<form th:action="@{/search}" method="post">
 		<input type="text" name="search" placeholder="e.g. succulent">
 		<input type="submit" value="Search">
 	</form>

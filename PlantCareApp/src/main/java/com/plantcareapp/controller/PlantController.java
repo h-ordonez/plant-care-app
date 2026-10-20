@@ -24,6 +24,11 @@ public class PlantController {
         return "index";
     }
 
+    @GetMapping("/login")
+    public String showLoginPage() {
+        return "login";
+    }
+
     @GetMapping("/about")
     public String showAbout() {
         return "about";

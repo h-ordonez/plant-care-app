@@ -6,6 +6,11 @@
     <li><a href="/plants">Browse</a></li>
     <li><a href="/about">About</a></li>
     <li><a href="/contact">Contact</a></li>
+    <li>
+        <form th:action="@{/logout}" method="post" style="display:inline;">
+            <input type="submit" value="Logout">
+        </form>
+    </li>
 </ul>
 </body>
 </html>
