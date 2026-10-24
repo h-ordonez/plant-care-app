@@ -94,4 +94,9 @@ public class PlantController {
         model.addAttribute("plant", plants.get(0));
         return "output";
     }
+
+    @GetMapping("/access-denied")
+    public String showAccessDenied() {
+        return "access-denied";
+    }
 }

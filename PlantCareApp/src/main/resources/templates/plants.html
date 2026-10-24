@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+        xlmns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Browse Plants</title>
@@ -11,7 +12,7 @@
     <div class="content-wide">
         <h1>Browse All Plants</h1>
 
-        <a th:href="@{/plants/showFormForAdd}">Add New Plant</a>
+        <a th:href="@{/plants/showFormForAdd}" sec:authorize="hasRole('ADMIN')">Add New Plant</a>
 
         <div class="plant-grid">
             <div class="plant-card" th:each="plant : ${plants}">
@@ -22,7 +23,7 @@
                         <p th:text="${plant.sciName}">Scientific Name</p>
                     </div>
                 </a>
-                <div class="plant-card-actions">
+                <div class="plant-card-actions" sec:authorize="hasRole('ADMIN')">
                     <a th:href="@{/plants/showFormForUpdate(plantId=${plant.id})}">Edit</a>
                     <a th:href="@{/plants/delete(plantId=${plant.id})}"
                        onclick="return confirm('Delete this plant?');">Delete</a>
