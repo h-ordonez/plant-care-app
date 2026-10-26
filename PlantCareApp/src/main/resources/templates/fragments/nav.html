@@ -1,12 +1,17 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http:www.thymeleaf.org/extras/spring-security">
 <body>
 <ul class="nav" th:fragment="nav">
     <li><a href="/">Home</a></li>
     <li><a href="/plants">Browse</a></li>
     <li><a href="/about">About</a></li>
     <li><a href="/contact">Contact</a></li>
-    <li>
+    <li sec:authorize="isAuthenticated()">
+        User: <span sec:authentication="name">username</span>
+        | Role(s): <span sec:authentication="principal.authorities">roles</span>
+    </li>
+    <li sec:authorize="isAuthenticated()">
         <form th:action="@{/logout}" method="post" style="display:inline;">
             <input type="submit" value="Logout">
         </form>
