@@ -38,7 +38,7 @@ including watering frequency, sunlight requirements, and plant descriptions.
 
 In MySQL, run the included dump file to create and populate the `plants_db` database:
   ```
-  mysql -u root -p < plants_db_20200731.sql
+  mysql -u root -p < 01_plants_db_20200731.sql
   ```
 
 **3. Configure database credentials**
@@ -84,7 +84,7 @@ Then navigate to the following in your web browser:
   │       │   ├── plants.html                 # Browse all plants
   │       │   └── search.html
   │       └── application.properties.example  # Database config template
-  ├── plants_db_20200731.sql                  # Database seed file
+  ├── 01_plants_db_20200731.sql                  # Database seed file
   └── pom.xml
   ```
 
